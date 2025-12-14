@@ -13,7 +13,7 @@
     "lint": "oxlint --ignore-path .gitignore && biome check",
     "format": "biome check --write",
     "release": "bun run build && npm version patch && git push && bun run publish:otp",
-    "publish:otp": "npm publish --access public --otp=$(op item get 'Npmjs - joelhooks' --otp)"
+    "publish:otp": "bash -c 'source .env && npm publish --access public --otp=$(op item get $NPM_1P_ITEM --otp)'"
   },
   "files": [
     "dist"
