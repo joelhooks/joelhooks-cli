@@ -1,6 +1,6 @@
 {
   "name": "joelhooks",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "npx joelhooks - who is this guy?",
   "bin": {
     "joelhooks": "dist/index.js"
