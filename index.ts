@@ -9,6 +9,31 @@ import link from "terminal-link";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
+/**
+ * Print text with a retro modem feel - character by character with variable timing
+ * 9600 baud = 960 chars/sec = ~1ms per char, but we slow it down for effect
+ */
+async function modemPrint(text: string, charsPerSec = 800) {
+  const baseDelay = 1000 / charsPerSec;
+  for (const char of text) {
+    process.stdout.write(char);
+    // Add slight randomness for that authentic modem feel
+    const jitter = Math.random() * 0.5 + 0.75; // 0.75x to 1.25x
+    await sleep(baseDelay * jitter);
+  }
+}
+
+/**
+ * Print lines with modem effect, but line-by-line for better performance on larger blocks
+ */
+async function modemPrintLines(text: string, msPerLine = 50) {
+  const lines = text.split("\n");
+  for (const line of lines) {
+    console.log(line);
+    await sleep(msPerLine);
+  }
+}
+
 const badassGradient = gradient(["#ff6b6b", "#feca57", "#48dbfb", "#ff9ff3"]);
 
 const header = `
@@ -20,9 +45,9 @@ const header = `
  ╚════╝  ╚═════╝ ╚══════╝╚══════╝    ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝
 `;
 
-// Show name with a breath
-console.log(badassGradient(header));
-await sleep(800);
+// Show name line by line with modem effect
+await modemPrintLines(badassGradient(header), 80);
+await sleep(400);
 
 const bio = `
 I build tools for people who teach developers.
@@ -42,16 +67,15 @@ ${chalk.dim("Currently obsessed with:")}
 ${chalk.dim("Vancouver, WA")}
 `;
 
-// Show bio with a breath
-console.log(
-  boxen(bio.trim(), {
-    padding: 1,
-    margin: 1,
-    borderStyle: "round",
-    borderColor: "cyan",
-  }),
-);
-await sleep(600);
+// Show bio with modem effect
+const boxedBio = boxen(bio.trim(), {
+  padding: 1,
+  margin: 1,
+  borderStyle: "round",
+  borderColor: "cyan",
+});
+await modemPrintLines(boxedBio, 40);
+await sleep(300);
 
 const choice = await select({
   message: "Want to go deeper?",
