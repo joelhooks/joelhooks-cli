@@ -135,6 +135,8 @@ await modemPrintLines(boxedBio, 40);
 await cuteSpinner("take a moment...", 2500);
 
 let choice: string;
+console.log(chalk.dim("  esc to exit\n"));
+
 try {
   choice = await select({
     message: "Want to go deeper?",
@@ -167,7 +169,6 @@ try {
         name: `${chalk.green("🔧")} course-builder - the platform`,
         value: "https://github.com/skillrecordings/course-builder",
       },
-      { name: `${chalk.red("👋")} Nah, I'm good`, value: "exit" },
     ],
   });
 } catch {
@@ -176,9 +177,7 @@ try {
   process.exit(0);
 }
 
-if (choice === "exit") {
-  sayGoodbye();
-} else {
+if (choice) {
   console.log(chalk.dim(`\nOpening ${choice}...\n`));
   await open(choice);
   sayGoodbye("Thanks for stopping by!");
