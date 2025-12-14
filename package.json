@@ -1,40 +1,40 @@
 {
-	"name": "joelhooks",
-	"version": "1.0.0",
-	"description": "npx joelhooks - who is this guy?",
-	"bin": {
-		"joelhooks": "./dist/index.js"
-	},
-	"type": "module",
-	"scripts": {
-		"build": "bun build index.ts --outdir dist --target node",
-		"dev": "bun run index.ts",
-		"typecheck": "tsgo --noEmit",
-		"lint": "oxlint --ignore-path .gitignore && biome check",
-		"format": "biome check --write"
-	},
-	"files": [
-		"dist"
-	],
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/joelhooks/joelhooks-cli.git"
-	},
-	"author": "Joel Hooks <joelhooks@gmail.com>",
-	"license": "MIT",
-	"devDependencies": {
-		"@biomejs/biome": "^2.3.8",
-		"@types/bun": "latest",
-		"@types/gradient-string": "^1.1.6",
-		"@typescript/native-preview": "^7.0.0-dev.20251214.1",
-		"oxlint": "^1.32.0"
-	},
-	"dependencies": {
-		"@inquirer/prompts": "^8.1.0",
-		"boxen": "^8.0.1",
-		"chalk": "^5.6.2",
-		"gradient-string": "^3.0.0",
-		"open": "^11.0.0",
-		"terminal-link": "^5.0.0"
-	}
+  "name": "joelhooks",
+  "version": "1.0.0",
+  "description": "npx joelhooks - who is this guy?",
+  "bin": {
+    "joelhooks": "dist/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "bun build index.ts --outdir dist --target node",
+    "dev": "bun run index.ts",
+    "typecheck": "tsgo --noEmit",
+    "lint": "oxlint --ignore-path .gitignore && biome check",
+    "format": "biome check --write"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelhooks/joelhooks-cli.git"
+  },
+  "author": "Joel Hooks <joelhooks@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.8",
+    "@types/bun": "latest",
+    "@types/gradient-string": "^1.1.6",
+    "@typescript/native-preview": "^7.0.0-dev.20251214.1",
+    "oxlint": "^1.32.0"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^8.1.0",
+    "boxen": "^8.0.1",
+    "chalk": "^5.6.2",
+    "gradient-string": "^3.0.0",
+    "open": "^11.0.0",
+    "terminal-link": "^5.0.0"
+  }
 }
