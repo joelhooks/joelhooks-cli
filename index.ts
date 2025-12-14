@@ -135,11 +135,21 @@ await modemPrintLines(boxedBio, 40);
 await cuteSpinner("take a moment...", 2500);
 
 let choice: string;
-console.log(chalk.dim("  esc to exit\n"));
 
 try {
   choice = await select({
     message: "Want to go deeper?",
+    theme: {
+      style: {
+        help: (text: string) => chalk.dim(text),
+        keysHelpTip: (keys: [string, string][]) => {
+          const formatted = keys
+            .map(([key, label]) => `${chalk.bold(key)} ${chalk.dim(label)}`)
+            .join(chalk.dim(" • "));
+          return `${formatted} ${chalk.dim("•")} ${chalk.bold("esc")} ${chalk.dim("exit")}`;
+        },
+      },
+    },
     choices: [
       {
         name: `${chalk.yellow("🍳")} egghead.io - where it all started`,
