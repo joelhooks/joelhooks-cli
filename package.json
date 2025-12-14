@@ -11,7 +11,9 @@
     "dev": "bun run index.ts",
     "typecheck": "tsgo --noEmit",
     "lint": "oxlint --ignore-path .gitignore && biome check",
-    "format": "biome check --write"
+    "format": "biome check --write",
+    "release": "bun run build && npm version patch && git push && bun run publish:otp",
+    "publish:otp": "npm publish --access public --otp=$(op item get 'Npmjs - joelhooks' --otp)"
   },
   "files": [
     "dist"
